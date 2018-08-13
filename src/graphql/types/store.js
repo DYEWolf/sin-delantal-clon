@@ -1,4 +1,4 @@
-import {GraphQLObjectType, GraphQLString, GraphQLID, GraphQLNonNull, GraphQLList, GraphQLInt} from 'graphql';
+import {GraphQLObjectType, GraphQLString, GraphQLID, GraphQLNonNull, GraphQLList, GraphQLInt, GraphQLInputObjectType} from 'graphql';
 
 import {TypeRestType} from './type_rest';
 import {ProductType} from './products';
@@ -91,6 +91,49 @@ export const StoreType = new GraphQLObjectType({
                 const {product} = property;
                 return Product.find({_id:{$in:product}}).exec();
             }
+        },
+    })
+});
+
+export const StoreInputType = new GraphQLInputObjectType({
+    name: 'addStore',
+    description: 'add store',
+    fields: () => ({
+        directions: {
+            type: new GraphQLList(GraphQLID)
+        },
+        name: {
+            type: GraphQLString
+        },
+        mail: {
+            type: GraphQLString
+        },
+        tel: {
+            type: GraphQLString
+        },
+        type_rest: {
+            type: GraphQLNonNull(GraphQLID)
+        },
+        rating: {
+            type: new GraphQLList(GraphQLID)
+        },
+        open_restaurant: {
+            type: GraphQLString
+        },
+        close_restaurant: {
+            type: GraphQLString
+        },
+        description: {
+            type: GraphQLString
+        },
+        logo: {
+            type: GraphQLString
+        },
+        price: {
+            type: GraphQLInt
+        },
+        products: {
+            type: new GraphQLList(GraphQLID)
         },
     })
 });

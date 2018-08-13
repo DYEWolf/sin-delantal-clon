@@ -1,4 +1,4 @@
-import {GraphQLObjectType, GraphQLString, GraphQLNonNull, GraphQLID} from 'graphql';
+import {GraphQLObjectType, GraphQLString, GraphQLNonNull, GraphQLID, GraphQLInt, GraphQLInputObjectType} from 'graphql';
 
 export const CuponType = new GraphQLObjectType({
     name: 'Cupon',
@@ -9,6 +9,28 @@ export const CuponType = new GraphQLObjectType({
         },
         cupon: {
             type: GraphQLString
-        }
+        },
+        discount: {
+            type: GraphQLInt
+        },
+        description: {
+            type: GraphQLString
+        },
+    })
+});
+
+export const CuponInputType = new GraphQLInputObjectType({
+    name: 'addCupon',
+    description: 'add cupon',
+    fields: () => ({
+        cupon: {
+            type: GraphQLString
+        },
+        discount: {
+            type: GraphQLInt
+        },
+        description: {
+            type: GraphQLString
+        },
     })
 });
