@@ -40,20 +40,19 @@ const UserSchema = new Schema({
     },
     "user_pay": {
         type: String,
-        required: true
     },
-    "directions":[{
+    "directions":{
         type: [{
             "street": String,
             "num_int": Number,
             "num_ext": Number,
-            "ZIP": Number
+            "zip": Number
         }],
         required: true
-    }]
+    }
 }, {collection: "User", timestamps: true});
 
-UserSchema.pre('save', (next) => {
+UserSchema.pre('save', function(next) {
     let user = this;
     if(!user.isModified('password')) {return next();}
     bcrypt.genSalt(SALT, (err, salt) => {

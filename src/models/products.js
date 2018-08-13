@@ -13,7 +13,6 @@ const ProductsSchema = new Schema({
     },
     "photo": {
         type: String,
-        require: true
     },
     "description": {
         type: String,
@@ -28,6 +27,6 @@ const ProductsSchema = new Schema({
         type: Number,
         required: true
     }
-}, {collection: "Product", timestamps: true});
+}, {collection: "Products", timestamps: true});
 
-export default mongoose.model('Product', ProductsSchema);
+export default mongoose.model('Products', ProductsSchema);

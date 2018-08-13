@@ -2,10 +2,10 @@ import mongoose from 'mongoose';
 
 const Schema = mongoose.Schema;
 
-const OrdersSchema = new Schema({
+const OrderSchema = new Schema({
     "products": [{
         type: Schema.Types.ObjectId,
-        ref: 'Product',
+        ref: 'Products',
         required: true
     }],
     "amount": {
@@ -22,7 +22,7 @@ const OrdersSchema = new Schema({
         required: true
     },
     "payment_status": {
-        type: boolean,
+        type: Boolean,
         required: true
     },
     "user_direction":{
@@ -41,3 +41,5 @@ const OrdersSchema = new Schema({
     }
 
 }, {collection: "Order", timestamps: true});
+
+export default mongoose.model('Order', OrderSchema);
